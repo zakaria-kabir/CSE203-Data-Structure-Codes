@@ -1,0 +1,170 @@
+%%writefile q5.cpp
+
+
+#include<bits/stdc++.h>
+using namespace std;
+struct BinaryTreeNode {
+	int data;
+	BinaryTreeNode* left;
+	BinaryTreeNode* right;
+};
+
+void insert(BinaryTreeNode*& bst, int n) {
+	if (bst == nullptr) {
+		bst = new BinaryTreeNode;
+		bst->data = n;
+		bst->right = nullptr;
+		bst->left = nullptr;
+	}
+	else if (n > bst->data) {
+		insert(bst->right, n);
+	}
+	else if (n < bst->data) {
+		insert(bst->left, n);
+	}
+}
+void printqs(queue<int> q) 
+{ 
+	while(!q.empty()){
+		cout<<q.front()<<" ";
+		q.pop();
+	}cout<<endl;
+}
+void printbst(BinaryTreeNode* bst) {
+	if (bst == nullptr)
+		return;
+	printbst(bst->left);
+	cout << bst->data << " ";
+	printbst(bst->right);
+
+}
+int maxnumber(BinaryTreeNode* bst){
+	if(bst==nullptr)
+		return 0;
+	while(bst->right!=nullptr){
+		bst=bst->right;
+	}
+	return(bst->data);
+}
+/*int bstGetMax(BinaryTreeNode* node) {
+	if(node==nullptr)
+		throw "empty";
+	if (node->right == nullptr) 
+        return node->data; 
+     return bstGetMax(node->right);
+}
+*/
+//remove a data from the tree
+void removeData(BinaryTreeNode*& bst,int n){
+	if(bst==nullptr)
+		return;
+	else if(n>bst->data){
+		removeData(bst->right,n);
+	}
+	else if(n<bst->data){
+		removeData(bst->left,n);
+	}
+	else if(n==bst->data){
+		//node with 0 child
+		if(bst->left==nullptr && bst->right==nullptr){
+			bst=nullptr;
+		}
+		//node with one child
+		else if(bst->right==nullptr){
+			bst=bst->left;
+		}
+		else if(bst->left==nullptr){
+			bst=bst->right;
+		}
+		//node with two child
+		else{
+			int max=maxnumber(bst->left);
+			bst->data=max;
+			removeData(bst->left,max);
+		}
+		/*
+		else{
+			int min=minnumber(bst->right);
+			bst->data=min;
+			removeData(bst->right,min);
+		}
+		*/
+	}
+}
+void printPathsUtil(BinaryTreeNode* a, int sum, int sum_so_far, queue<int>& q,queue<int>& q1) 
+{ 
+    if (a == NULL) 
+        return; 
+ 	
+    sum_so_far += a->data;  
+      q.push(a->data);
+
+    	
+    if (sum_so_far <= sum ) 
+    { 	q1.push(a->data);
+    	
+
+    	q.pop();
+      
+    } 
+
+  
+    if (a->left != NULL) 
+        printPathsUtil(a->left, sum, sum_so_far,q,q1); 
+
+    if (a->right != NULL) 
+        printPathsUtil(a->right, sum, sum_so_far,q,q1); 
+} 
+
+void printPaths(BinaryTreeNode *a, int sum) 
+{ 
+
+    queue<int>q;
+    queue<int>q1;
+    
+    printPathsUtil(a, sum, 0,q,q1); 
+    cout<<endl;
+   	int sz=q.size();
+   	int s=q1.size();
+   	for(int i=0;i<s;i++){
+   		int x=q1.front();
+   		q1.pop();
+   		for(int j=0;j<sz;j++){
+   			int y=q.front();
+   			if(x==y){
+   				q.pop();
+   			}
+   			else{
+   				q.pop();
+   				q.push(y);
+   			}
+   		}
+   	}
+ while(!q.empty()){
+ 	removeData(a,q.front());
+ 	q.pop();
+ }
+   	
+
+
+} 
+int main() {
+	BinaryTreeNode* a = nullptr;
+	int count = 0;
+	insert(a, 29);
+	insert(a, 17);
+	insert(a, 115);
+	insert(a, 11);
+	insert(a, 18);
+	insert(a, 44);
+	insert(a, 214);
+	insert(a, -8);
+	insert(a, 12);
+	insert(a, 26);
+	insert(a, 200);
+	insert(a, 219);
+	printbst(a);
+	printPaths(a,50);
+cout<<endl;
+printbst(a);
+}

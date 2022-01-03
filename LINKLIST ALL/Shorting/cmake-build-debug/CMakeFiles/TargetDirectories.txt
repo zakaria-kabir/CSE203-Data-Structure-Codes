@@ -1,0 +1,3 @@
+C:/Users/zakar/source/repos/LINKLIST ALL/Shorting/cmake-build-debug/CMakeFiles/Shorting.dir
+C:/Users/zakar/source/repos/LINKLIST ALL/Shorting/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/zakar/source/repos/LINKLIST ALL/Shorting/cmake-build-debug/CMakeFiles/rebuild_cache.dir

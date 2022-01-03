@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct ListNode{
+  int data;
+  ListNode* next;
+};
+void add(ListNode *& linklist,int value){
+  if(linklist==nullptr){
+    ListNode* n=new ListNode;
+    n->data=value;
+    n->next=linklist;
+    linklist=n;
+  
+  }
+}
+  void print(ListNode* a){
+  while(a!=nullptr){
+    cout<<a->data<<" ";
+    a=a->next;
+  }
+}
+int main(){
+listnode* a=nullptr;
+	add(a,2);
+	print (a);
+}

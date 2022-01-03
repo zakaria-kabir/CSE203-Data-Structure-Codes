@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2020.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Shorting.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\Shorting.dir/objects.a @CMakeFiles\Shorting.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\Shorting.dir/objects.a -Wl,--no-whole-archive  -o Shorting.exe -Wl,--out-implib,libShorting.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Shorting.dir\linklibs.rsp

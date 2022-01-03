@@ -1,0 +1,32 @@
+%%writefile q2.cpp
+#include <bits/stdc++.h> 
+using namespace std; 
+
+float findSumOfIntegers(string str) 
+{ 
+	ifstream f;  
+	f.open(str); 
+	
+	float sum = 0, num = 0 ,n=0; 
+ 
+	string text=" "; 
+	while (f >> text) { 
+
+		if(isdigit(text[0])){
+			
+stringstream ss;  
+  ss << text;  
+  ss >> num; 
+  sum+=num;n++;
+		} 
+		
+	}
+	return sum/n; 
+
+} 
+
+int main() 
+{ string str="input.txt";
+ cout<<findSumOfIntegers(str); 
+	return 0; 
+} 

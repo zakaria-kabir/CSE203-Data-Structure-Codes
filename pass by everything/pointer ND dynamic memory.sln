@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pointer ND dynamic memory", "pointer ND dynamic memory.vcxproj", "{69522B44-02F8-466D-9A7C-1504150A3256}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69522B44-02F8-466D-9A7C-1504150A3256}.Debug|x64.ActiveCfg = Debug|x64
+		{69522B44-02F8-466D-9A7C-1504150A3256}.Debug|x64.Build.0 = Debug|x64
+		{69522B44-02F8-466D-9A7C-1504150A3256}.Debug|x86.ActiveCfg = Debug|Win32
+		{69522B44-02F8-466D-9A7C-1504150A3256}.Debug|x86.Build.0 = Debug|Win32
+		{69522B44-02F8-466D-9A7C-1504150A3256}.Release|x64.ActiveCfg = Release|x64
+		{69522B44-02F8-466D-9A7C-1504150A3256}.Release|x64.Build.0 = Release|x64
+		{69522B44-02F8-466D-9A7C-1504150A3256}.Release|x86.ActiveCfg = Release|Win32
+		{69522B44-02F8-466D-9A7C-1504150A3256}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BA68E0D-FDD0-47D3-859B-E5BD9EB45C76}
+	EndGlobalSection
+EndGlobal

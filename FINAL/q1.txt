@@ -1,0 +1,83 @@
+%%writefile q1.cpp
+
+#include<bits/stdc++.h>
+using namespace std;
+struct ListNode{
+	int data;
+	ListNode* next;
+};
+void add(ListNode *& linklist,int value){
+	if(linklist==nullptr){
+		ListNode* n=new ListNode;
+		n->data=value;
+		n->next=linklist;
+		linklist=n;
+
+	}
+	else{
+		ListNode*current =linklist;
+		while(current->next!=nullptr){
+			current =current->next;
+		}
+		ListNode *a=new ListNode;
+		a->data=value;
+		a->next=current->next;
+		current->next=a;
+	}
+}
+
+void print(ListNode* a){
+	while(a!=nullptr){
+		cout<<a->data<<" ";
+		a=a->next;
+	}
+}
+void removeData(ListNode*& a) {
+    if (a == nullptr) {
+        return;
+    }
+  ListNode* temp;
+    while(a!=nullptr){
+    	 temp=a;
+    	a=a->next;
+    	delete(temp);
+    }
+}
+void transferFromhelper(ListNode*& a,ListNode*& b){
+	while(a->next!=nullptr)
+	{
+		a=a->next;
+	}
+	while(b!=nullptr){
+		a->next=b;
+		b=b->next;
+		a=a->next;
+	}
+
+}
+void transferFrom(ListNode* a,ListNode*& b){
+	transferFromhelper(a,b);
+			removeData(b);
+}
+int main(){
+	ListNode* a=nullptr;
+
+	add(a,8);
+	add(a,17);
+	add(a,2);
+	add(a,4);
+
+	ListNode* b=nullptr;
+
+	add(b,1);
+	add(b,2);
+	add(b,3);
+
+	transferFrom(b,a);
+	cout<<"list 1: ";
+	print(a);cout<<endl;
+
+	cout<<"list 2: ";
+	print(b);
+
+}

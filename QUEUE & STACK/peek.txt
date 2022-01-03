@@ -1,0 +1,2 @@
+stack e last er ta peek
+queue e 1st er ta peek

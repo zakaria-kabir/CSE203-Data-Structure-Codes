@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1595068258 source:c:\users\zakar\source\repos\banishtest\main.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<cctype>
+	<iomanip>
+	<map>
+

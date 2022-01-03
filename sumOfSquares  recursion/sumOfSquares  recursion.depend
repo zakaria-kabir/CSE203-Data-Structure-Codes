@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1595141332 source:c:\users\zakar\source\repos\sumofsquares  recursion\main.cpp
+	<iostream>
+	<cmath>
+

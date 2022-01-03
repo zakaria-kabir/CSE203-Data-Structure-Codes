@@ -1,0 +1,119 @@
+#include <iostream>
+using namespace std;
+struct node{
+  int data = 0;
+  node* next = nullptr;
+};
+void addValue(node*&a, int value){
+  if(a == nullptr){
+    node* x = new node;
+    x->data = value;
+    x->next = a;//a is also a nullptr
+    a = x;
+  }
+  else{
+    node* current = a;
+    while(current->next!=nullptr){
+      current = current->next;
+    }
+    node* x = new node;
+    x->data = value;
+    x->next = current->next;//current->next is a nullptr
+    current->next = x;
+  }
+}
+
+void addIndex(node*&a, int index, int value){
+  if(index ==0){
+    node*x = new node;
+    x->data = value;
+    x->next = a;//a can be eith either empty or it can be nonempty
+    a = x;
+  }
+  else{
+  node*current = a;
+  for(int i=0; i<index - 1; ++i){
+    current = current->next;
+  }
+  node*x = new node;
+  x->data = value;
+  x->next = current->next;
+  current->next = x;
+  }
+
+}
+void removeData(node*&a, int value){
+  if(a == nullptr){
+    return ;
+  }
+  while(a->data == value){
+    node*j = a;
+    a = a->next;
+    delete j;
+    if(a==nullptr)return;
+  }
+  
+    node* current = a;
+    while(current->next!=nullptr){
+      if(current->next->data == value){
+        node* j = current->next;
+        current->next = current->next->next;
+        delete j;
+      }
+      else{
+        current =current->next;
+      }
+    }
+}
+void removeIndex(node*&a, int index){
+  if(index == 0){
+    node*j = a;
+    a = a->next;
+    delete j;
+  }
+  else{
+    node*current = a;
+    for(int i =0; i<index - 1; ++i){
+      current = current->next;
+    }
+    node* j = current->next;
+    current->next = current->next->next;
+    delete j;
+  }
+}
+void printData(node*a){
+  while(a!=nullptr){
+    cout<<a->data<<" ";
+    a = a->next;
+  }
+  cout<<endl;
+}
+int main(){
+  node* n = nullptr;
+  addValue(n,2);//0
+  addValue(n,2);//0
+  addValue(n,3);//1
+  addValue(n,4);
+  addValue(n,4);
+  addValue(n,4);
+  printData(n);
+  
+  node* a1 = n;  
+  while(a1!=nullptr){
+    cout<<a1->data<<"";
+    node* a2 = n;
+    int count = 0;
+    while(a2!=nullptr){
+      if(a1->data == a2->data){
+        a2 = a2->next;
+        count ++;
+      }
+    }
+    if(count>1){
+      removeData(n,a1->data);
+    }
+    a1 = a1->next;
+  }
+  
+  return 0;
+}

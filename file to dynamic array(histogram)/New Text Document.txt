@@ -1,0 +1,83 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void printhistogram(string file, int** his, int*& elements, int bin, int& c) {
+    int counter = 0, z = 0, num = 0, q = 0, m = 0, e = 0, d = 0;
+    int* arr = new int[bin];
+    int max = INT_MIN, min = INT_MAX;
+    fstream myfile;
+    myfile.open(file);
+    while (myfile >> num)
+    {
+        c++;
+    }
+    myfile.close();
+    elements = new int[c];
+    myfile.open(file);
+    num = 0;
+    while (myfile >> num)
+    {
+        elements[counter] = num;
+        counter++;
+    }
+    myfile.close();
+    for (int i = 0; i < counter; i++) {
+        if (elements[i] > max)
+            max = elements[i];
+        if (elements[i] < min)
+            min = elements[i];
+    }
+    e = q = max;
+    d = m = min;
+    int x = max - min;
+    int binnum = x / bin;
+    for (int i = 0; i < bin; i++) {
+        z = 0;
+        for (int j = 0; j < counter; j++) {
+            if (elements[j] >= min && elements[j] <= min + binnum) {
+                z++;
+                arr[i] = z;
+                his[i] = new int[z];
+            }
+        }
+        min += 1 + binnum;
+    }
+    int binm = (q - m) / bin;
+    for (int i = 0; i < bin; i++) {
+        for (int j = 0; j < arr[i];) {
+            for (int k = 0; k < counter; k++) {
+                if (elements[k] >= m && elements[k] <= m + binm) {
+                    his[i][j] = elements[k];
+                    j++;
+                }
+            }
+        }
+        m += 1 + binm;
+    }
+    int bim = (e - d) / bin;
+    cout << "Histogram with bin size 3: " << endl;
+    for (int i = 0; i < bin; ++i) {
+        cout << d << "-" << d + bim << " : ";
+        for (int j = 0; j < arr[i]; ++j) {
+            cout << his[i][j] << " ";
+        }
+        cout << endl;
+        d += 1 + bim;
+    }
+    delete[] arr;
+    delete[] elements;
+    for (int i = 0; i < bin; i++) {
+        delete[] his[i];
+    }
+}
+
+int main() {
+    int numberofbin = 3;
+    int len = 0;
+    //cout << "enter number of bin: ";
+    //cin >> numberofbin;
+    int** histogram = new int* [numberofbin];
+    int* numInbins = nullptr;
+    string file = "z.txt";
+    printhistogram(file, histogram, numInbins, numberofbin, len);
+}

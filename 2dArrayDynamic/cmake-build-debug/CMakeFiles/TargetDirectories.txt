@@ -1,0 +1,3 @@
+C:/Users/zakar/source/repos/2dArrayDynamic/cmake-build-debug/CMakeFiles/2dArrayDynamic.dir
+C:/Users/zakar/source/repos/2dArrayDynamic/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/zakar/source/repos/2dArrayDynamic/cmake-build-debug/CMakeFiles/rebuild_cache.dir

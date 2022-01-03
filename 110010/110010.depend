@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1595867119 source:c:\users\zakar\source\repos\110010\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<iostream>
+	<string>
+	<iostream>
+	<string>
+

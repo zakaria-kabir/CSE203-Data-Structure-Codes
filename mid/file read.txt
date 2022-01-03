@@ -1,0 +1,2 @@
+getline ->line by line
+file>> word->word by word

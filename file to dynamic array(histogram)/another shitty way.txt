@@ -1,0 +1,84 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void memory(string file, int** his, int* elements, int bin) {//element=allnumber; bin= number of row;
+    int counter = 0, c = 0;
+    int z = 0;
+    int* a=new int[z];
+    int* arr = new int[z];
+    int max = INT_MIN, min = INT_MAX;
+    fstream myfile(file);
+    while (myfile >> elements[counter])
+    {
+        if (elements[counter] > max)
+            max = elements[counter];
+        if (elements[counter] < min)
+            min = elements[counter];
+        counter++;
+    }
+
+    int x = max - min;
+
+    int binnum = x / bin;
+
+    for (int i = 0; i < bin; i++) {
+        z = 0;
+
+        for (int j = 0; j < counter; j++) {
+            if (elements[j] >= min && elements[j] <= min + binnum) {
+                z++;
+                arr[i] = z;
+
+                his[i] = new int[z];
+            }
+        }
+        min += 1 + binnum;
+    }
+
+    fstream mfile(file);
+    int ma = INT_MIN, mi = INT_MAX;
+    while (mfile >> elements[c])
+    {
+        if (elements[c] > ma)
+            ma = elements[c];
+        if (elements[c] < mi)
+            mi = elements[c];
+        c++;
+    }
+    int binm = (ma - mi) / bin;
+    for (int i = 0; i < c; i++) {
+        cout << elements[i] << " ";
+    }cout << endl;
+    for (int i = 0; i < bin; i++) {
+        cout << mi << "-" << mi + binnum << " : ";
+        for (int j = 0; j < arr[i]; j++) {
+            for (int k = 0; k < c; k++) {
+                if (elements[k] >= mi && elements[k] <= mi + binm) {
+                    a[j]=elements[k];
+                    his[i][j]=a[j];
+                }
+            }
+        }
+        mi += 1 + binm;
+    }
+
+    for (int i = 0; i < bin; ++i) {
+        for (int j = 0; j < arr[i]; ++j) {
+            cout << his[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int numberofbin = 3;
+    //cout << "enter number of bin: ";
+    //cin >> numberofbin;
+    int** histogram = new int* [numberofbin];
+    int* numInbins = new int[numberofbin];
+
+    string file = "z.txt";
+    memory(file, histogram, numInbins, numberofbin);
+
+   
+}
